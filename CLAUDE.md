@@ -348,9 +348,13 @@ git push origin main
    ```bash
    git remote add origin https://github.com/solemnzheng/msgnotify.git
    ```
-2. 代码已推送至GitHub：
+2. 默认分支已更改为master：
    ```bash
-   git push -u origin main
+   git branch -m main master
+   ```
+3. 代码已推送至GitHub：
+   ```bash
+   git push -u origin master
    ```
 
 ## 🎯 执行优先级总结
