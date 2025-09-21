@@ -344,12 +344,11 @@ git push origin main
 ```
 
 ### GitHub配置步骤
-1. 在GitHub上创建新仓库
-2. 使用以下命令关联本地仓库：
+1. 项目已与GitHub仓库关联：
    ```bash
-   git remote add origin https://github.com/your-username/your-repo-name.git
+   git remote add origin https://github.com/solemnzheng/msgnotify.git
    ```
-3. 首次推送：
+2. 代码已推送至GitHub：
    ```bash
    git push -u origin main
    ```
