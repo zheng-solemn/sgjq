@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Log files
+*.log
+
+# Environment files
+.env
+
+# Temporary files
+*.tmp
+*.temp
+nul
+
+# Backup files
+*.backup
+*.backup_*
+
+# IDE files
+.vscode/
+.idea/
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# SFTP automation logs
+sftp_automation.log
+
+# Server logs
+server.log
+
+# Python cache directories
+*/__pycache__
