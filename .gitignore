@@ -37,16 +37,9 @@ server.log
 
 # Claude configuration files
 .claude/
-CLAUDE.md
-GEMINI.md
-SYSTEM_ANALYSIS.md
 
 # SFTP and backup scripts
-backup.bat
 sftp_manager.py
 
-# Data files that should not be synced
-check_log.txt
-code_data.txt
-messages.json
+# Test files
 test_backup.txt

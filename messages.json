@@ -1,0 +1,805 @@
+{
+    "messages": [
+        {
+            "code": "mnizz@live.com于2025年9月17日 下午10:45收到来自Neon Team的邮件，主题为：More compute hours in your Neon plan",
+            "hasCode": false,
+            "timestamp": 1758149158,
+            "time": "2025-09-18 06:45:58",
+            "node_id": "unknown",
+            "id": 51
+        },
+        {
+            "code": "Neon: 免费计划计算时间翻倍至100 CU小时\/项目。",
+            "hasCode": false,
+            "timestamp": 1758149164,
+            "time": "2025-09-18 06:46:04",
+            "node_id": "unknown",
+            "id": 52
+        },
+        {
+            "code": "tunhuo@gmail.com于2025年9月17日下午10:58收到来自Amazon Web Services的邮件，主题为：Important – AWS Invoice e-mail address changes",
+            "hasCode": false,
+            "timestamp": 1758149944,
+            "time": "2025-09-18 06:59:04",
+            "node_id": "unknown",
+            "id": 53
+        },
+        {
+            "code": "消息已过滤 (AI忽略: 常规通知)",
+            "hasCode": false,
+            "timestamp": 1758149946,
+            "time": "2025-09-18 06:59:06",
+            "node_id": "unknown",
+            "id": 54
+        },
+        {
+            "code": "solemn.zheng@gmail.com于2025年9月17日下午11:41收到来自Google Cloud Support的邮件，主题为：Google Cloud Support 63086511: Request for Billing Adjustment by misunderstanding",
+            "hasCode": false,
+            "timestamp": 1758152524,
+            "time": "2025-09-18 07:42:04",
+            "node_id": "unknown",
+            "id": 55
+        },
+        {
+            "code": "Google Cloud Billing Support: 很遗憾，您的调整请求未获批准，案件已关闭。",
+            "hasCode": false,
+            "timestamp": 1758152528,
+            "time": "2025-09-18 07:42:08",
+            "node_id": "unknown",
+            "id": 56
+        },
+        {
+            "code": "rohszx@gmail.com于2025年9月17日下午11:45收到来自Neon Team的邮件，主题为：More compute hours in your Neon plan",
+            "hasCode": false,
+            "timestamp": 1758152883,
+            "time": "2025-09-18 07:48:03",
+            "node_id": "unknown",
+            "id": 57
+        },
+        {
+            "code": "消息已过滤 (AI忽略: 常规通知)",
+            "hasCode": false,
+            "timestamp": 1758152885,
+            "time": "2025-09-18 07:48:05",
+            "node_id": "unknown",
+            "id": 58
+        },
+        {
+            "code": "zzsolo@gmail.com于2025年9月17日下午11:50收到来自Offramp的邮件，主题为：Almost there! Complete your Offramp verification in minutes",
+            "hasCode": false,
+            "timestamp": 1758153063,
+            "time": "2025-09-18 07:51:03",
+            "node_id": "unknown",
+            "id": 59
+        },
+        {
+            "code": "Offramp: 提醒完成身份验证以解锁账户功能。",
+            "hasCode": false,
+            "timestamp": 1758153066,
+            "time": "2025-09-18 07:51:06",
+            "node_id": "unknown",
+            "id": 60
+        },
+        {
+            "code": "中国电信: 账户余额不足8.13元，建议及时充值避免停机。",
+            "hasCode": false,
+            "timestamp": 1758154445,
+            "time": "2025-09-18 08:14:05",
+            "node_id": "unknown",
+            "id": 61
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 防空警报)",
+            "hasCode": false,
+            "timestamp": 1758155883,
+            "time": "2025-09-18 08:38:03",
+            "node_id": "unknown",
+            "id": 62
+        },
+        {
+            "code": "天翼云: 您的天翼云手机公众版将于2025-09-25到期，请及时续订。",
+            "hasCode": false,
+            "timestamp": 1758156136,
+            "time": "2025-09-18 08:42:16",
+            "node_id": "unknown",
+            "id": 63
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 防空警报)",
+            "hasCode": false,
+            "timestamp": 1758156658,
+            "time": "2025-09-18 08:50:58",
+            "node_id": "unknown",
+            "id": 64
+        },
+        {
+            "code": "solemn.zheng@gmail.com于2025年9月18日上午1:01收到来自Google Cloud Support的邮件，主题为：Your chat transcript for Case #63086511",
+            "hasCode": false,
+            "timestamp": 1758157324,
+            "time": "2025-09-18 09:02:04",
+            "node_id": "unknown",
+            "id": 65
+        },
+        {
+            "code": "Google Cloud: 确认支持案例63086511创建，涉及账单调整争议，用户拒绝支付剩余26美元费用。",
+            "hasCode": false,
+            "timestamp": 1758157332,
+            "time": "2025-09-18 09:02:12",
+            "node_id": "unknown",
+            "id": 66
+        },
+        {
+            "code": "solemn.zheng@gmail.com于2025年9月18日上午1:29收到来自Google Cloud Support的邮件，主题为：Google Cloud Support 63086511: Request for Billing Adjustment by misunderstanding",
+            "hasCode": false,
+            "timestamp": 1758159004,
+            "time": "2025-09-18 09:30:04",
+            "node_id": "unknown",
+            "id": 67
+        },
+        {
+            "code": "Google Cloud Billing Support: 已提交一次性调整请求，48小时内邮件更新。",
+            "hasCode": false,
+            "timestamp": 1758159007,
+            "time": "2025-09-18 09:30:07",
+            "node_id": "unknown",
+            "id": 68
+        },
+        {
+            "code": "sbpo.it@gmail.com于2025年9月18日上午1:48收到来自Neon Team的邮件，主题为：More compute hours in your Neon plan",
+            "hasCode": false,
+            "timestamp": 1758160143,
+            "time": "2025-09-18 09:49:03",
+            "node_id": "unknown",
+            "id": 69
+        },
+        {
+            "code": "消息已过滤 (AI忽略: 常规通知)",
+            "hasCode": false,
+            "timestamp": 1758160146,
+            "time": "2025-09-18 09:49:06",
+            "node_id": "unknown",
+            "id": 70
+        },
+        {
+            "code": "tunhuo@gmail.com于2025年9月18日上午1:51收到来自Neon Team的邮件，主题为：More compute hours in your Neon plan",
+            "hasCode": false,
+            "timestamp": 1758160323,
+            "time": "2025-09-18 09:52:03",
+            "node_id": "unknown",
+            "id": 71
+        },
+        {
+            "code": "消息已过滤 (AI忽略: 常规通知)",
+            "hasCode": false,
+            "timestamp": 1758160325,
+            "time": "2025-09-18 09:52:05",
+            "node_id": "unknown",
+            "id": 72
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑先生)",
+            "hasCode": false,
+            "timestamp": 1758160577,
+            "time": "2025-09-18 09:56:17",
+            "node_id": "unknown",
+            "id": 73
+        },
+        {
+            "code": "中国移动: 邀请参与服务调研问卷，有机会获赠流量或语音。",
+            "hasCode": false,
+            "timestamp": 1758160694,
+            "time": "2025-09-18 09:58:14",
+            "node_id": "unknown",
+            "id": 74
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758161175,
+            "time": "2025-09-18 10:06:15",
+            "node_id": "unknown",
+            "id": 75
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 上午02:14收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758161698,
+            "time": "2025-09-18 10:14:58",
+            "node_id": "unknown",
+            "id": 76
+        },
+        {
+            "code": "Dear Customer, \n\nA support ticket has been created in our system on your behalf. Here is the ticket summary: \n\nHi, My account is mnizzlive.com and I registered for it about 10 years ago.\nA few weeks ago, I login in and it prompted me to enhance security, so I might add Microsoft Authenticator to my account. Then I charged 5 but did not make any orders. Now when I tried to login in my account again, it asked me for the code from Microsoft Authenticator, but what happened a few days ago was that I deleted the Microsoft Authenticator app by mistake, and when I downloaded it and login again, I thought everything will be remained, but I found that all data has lost because it does support \"automatically backup\" in Android. So now I have lost all my data in my Microsoft Authenticator, including the binding connections with my vultr account, what should I do to get my access to my account?\nThanks\n[cid:1696058a0eef440db07dd568f9006ba4][cid:c50403f973224a4091303847ebb2ee90]\n________________________________\nFrom: Vultr Support \nSent: Friday, August 29, 2025 3:57 PM\nTo: mnizzlive.com \nSubject: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nzheng zhong,\nWe have logged an update to your Vultr.com account's authentication settings [mnizzlive.com].\nA user from 35.212.199.21 (US) has added a new Google Auth two factor authentication method.\nWe are notifying you because your account security is important to us. If you made this change, no further action is required. If you did NOT make this change, please reply to this email as soon as possible.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved.\n\nTo manage or update your ticket, please visit:\n https:my.vultr.comsupportview_ticket?TICKETIDNNJ16OTW \n\nDid you know? Vultr has a wealth of knowledge on Vultr Docs ! \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758161700,
+            "time": "2025-09-18 10:15:00",
+            "node_id": "unknown",
+            "id": 77
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758161910,
+            "time": "2025-09-18 10:18:30",
+            "node_id": "unknown",
+            "id": 78
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 防空警报)",
+            "hasCode": false,
+            "timestamp": 1758162078,
+            "time": "2025-09-18 10:21:18",
+            "node_id": "unknown",
+            "id": 79
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 上午02:21收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758162118,
+            "time": "2025-09-18 10:21:58",
+            "node_id": "unknown",
+            "id": 80
+        },
+        {
+            "code": "Vultr: 工单NNJ16OTW已由系统管理员团队更新。",
+            "hasCode": false,
+            "timestamp": 1758162121,
+            "time": "2025-09-18 10:22:01",
+            "node_id": "unknown",
+            "id": 81
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758162269,
+            "time": "2025-09-18 10:24:29",
+            "node_id": "unknown",
+            "id": 82
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758163512,
+            "time": "2025-09-18 10:45:12",
+            "node_id": "unknown",
+            "id": 83
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 河南)",
+            "hasCode": false,
+            "timestamp": 1758164602,
+            "time": "2025-09-18 11:03:22",
+            "node_id": "unknown",
+            "id": 84
+        },
+        {
+            "code": "消息已过滤 (AI忽略: 常规通知)",
+            "hasCode": false,
+            "timestamp": 1758166489,
+            "time": "2025-09-18 11:34:49",
+            "node_id": "unknown",
+            "id": 85
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 上午03:54收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758167698,
+            "time": "2025-09-18 11:54:58",
+            "node_id": "unknown",
+            "id": 86
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\nHi,\nPls also attach this as another evidence to your team. This is the screenshot of my current Microsoft Authenticator app. As you can see, all data had been lost, not only the one that I set up for my vultr account. Fortunately, many platforms support multiple 2FA methods, so I can reset them or still can get access to their accounts. But vultr does not support or maybe I didn't set is properly, which caused the current issue.\n[cid:6a37f954ead04a3382656160e631d64c]\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 2:20 AM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by System Admins Team.\nHello,\nThank you for contacting the Vultr Technical Support team. To meet your request, we will need to forward this ticket to our Account Management team. Please allow some additional time while your inquiry is being reviewed.\nIn the meantime, please feel free to add any helpful feedback to this email. You can also check out \"https:www.vultr.comresourcesfaq. We look forward to assisting you further!\nRegards,\nSean B.\nSystem Administrator\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758167699,
+            "time": "2025-09-18 11:54:59",
+            "node_id": "unknown",
+            "id": 87
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758167975,
+            "time": "2025-09-18 11:59:35",
+            "node_id": "unknown",
+            "id": 88
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 上午04:01收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758168118,
+            "time": "2025-09-18 12:01:58",
+            "node_id": "unknown",
+            "id": 89
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\n________________________________\nFrom: zhong zheng \nSent: Thursday, September 18, 2025 3:54 AM\nTo: Vultr Support \nSubject: Re: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\nHi,\nPls also attach this as another evidence to your team. This is the screenshot of my current Microsoft Authenticator app. As you can see, all data had been lost, not only the one that I set up for my vultr account. Fortunately, many platforms support multiple 2FA methods, so I can reset them or still can get access to their accounts. But vultr does not support or maybe I didn't set is properly, which caused the current issue.\n[cid:6a37f954ead04a3382656160e631d64c]\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 2:20 AM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by System Admins Team.\nHello,\nThank you for contacting the Vultr Technical Support team. To meet your request, we will need to forward this ticket to our Account Management team. Please allow some additional time while your inquiry is being reviewed.\nIn the meantime, please feel free to add any helpful feedback to this email. You can also check out \"https:www.vultr.comresourcesfaq. We look forward to assisting you further!\nRegards,\nSean B.\nSystem Administrator\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758168120,
+            "time": "2025-09-18 12:02:00",
+            "node_id": "unknown",
+            "id": 90
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 郑重)",
+            "hasCode": false,
+            "timestamp": 1758168169,
+            "time": "2025-09-18 12:02:49",
+            "node_id": "unknown",
+            "id": 91
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 拒收请回复)",
+            "hasCode": false,
+            "timestamp": 1758183177,
+            "time": "2025-09-18 16:12:57",
+            "node_id": "unknown",
+            "id": 92
+        },
+        {
+            "code": "消息已过滤 (消息关键词: 拒收请回复)",
+            "hasCode": false,
+            "timestamp": 1758184351,
+            "time": "2025-09-18 16:32:31",
+            "node_id": "unknown",
+            "id": 93
+        },
+        {
+            "code": "HH88香港娛樂城: 转会即送68体验分，联系客服领取。",
+            "hasCode": false,
+            "timestamp": 1758186135,
+            "time": "2025-09-18 17:02:15",
+            "node_id": "unknown",
+            "id": 94
+        },
+        {
+            "code": "zzsolo@gmail.com于2025年9月18日上午9:23收到来自Rube Team的邮件，主题为：One week in — how’s Rube treating you?",
+            "hasCode": false,
+            "timestamp": 1758187443,
+            "time": "2025-09-18 17:24:03",
+            "node_id": "unknown",
+            "id": 95
+        },
+        {
+            "code": "Rube: 询问您使用Rube一周的体验和反馈。",
+            "hasCode": false,
+            "timestamp": 1758187446,
+            "time": "2025-09-18 17:24:06",
+            "node_id": "unknown",
+            "id": 96
+        },
+        {
+            "code": "消息已过滤 (消息关键词: Club)",
+            "hasCode": false,
+            "timestamp": 1758191264,
+            "time": "2025-09-18 18:27:44",
+            "node_id": "unknown",
+            "id": 97
+        },
+        {
+            "code": "消息已过滤 (消息关键词: Club)",
+            "hasCode": false,
+            "timestamp": 1758191270,
+            "time": "2025-09-18 18:27:50",
+            "node_id": "unknown",
+            "id": 98
+        },
+        {
+            "code": "哈密市商业银行: 账户*8119减少40.00元，余额180.65元。",
+            "hasCode": false,
+            "timestamp": 1758192117,
+            "time": "2025-09-18 18:41:57",
+            "node_id": "unknown",
+            "id": 99
+        },
+        {
+            "code": "zzsolo@live.com于2025年9月18日 下午12:38收到来自Trading 212的邮件，主题为：Reduction in USD interest rate",
+            "hasCode": false,
+            "timestamp": 1758199139,
+            "time": "2025-09-18 20:38:59",
+            "node_id": "unknown",
+            "id": 100
+        },
+        {
+            "code": "Trading 212: 因美联储降息，美元利率从4.10%调整至3.80%。",
+            "hasCode": false,
+            "timestamp": 1758199142,
+            "time": "2025-09-18 20:39:02",
+            "node_id": "unknown",
+            "id": 101
+        },
+        {
+            "code": "zzsolo@live.com于2025年9月18日 下午01:21收到来自POEMS by PhillipCapital的邮件，主题为：Handpicked for You – Article Digest",
+            "hasCode": false,
+            "timestamp": 1758201718,
+            "time": "2025-09-18 21:21:58",
+            "node_id": "unknown",
+            "id": 102
+        },
+        {
+            "code": "WhatsApp: 账号因安全筛查失败面临永久冻结，需立即认证。",
+            "hasCode": false,
+            "timestamp": 1758206442,
+            "time": "2025-09-18 22:40:42",
+            "node_id": "unknown",
+            "id": 103
+        },
+        {
+            "code": "sbpo.it@gmail.com于2025年9月18日下午4:56收到来自Google Cloud Support的邮件，主题为：[Case #63086448] Billing Dispute Request – Accidental Usage via Google AI Studio",
+            "hasCode": false,
+            "timestamp": 1758214623,
+            "time": "2025-09-19 00:57:03",
+            "node_id": "unknown",
+            "id": 104
+        },
+        {
+            "code": "Google Cloud Platform: 关于计费争议案例63086448，需回复更新，否则可能关闭。",
+            "hasCode": false,
+            "timestamp": 1758214627,
+            "time": "2025-09-19 00:57:07",
+            "node_id": "unknown",
+            "id": 105
+        },
+        {
+            "code": "zzsolo@live.com于2025年9月18日 下午05:34收到来自iFAST Global Bank Support的邮件，主题为：Interest Rate Update for USD & HKD Multi-Currency Current Account",
+            "hasCode": false,
+            "timestamp": 1758216898,
+            "time": "2025-09-19 01:34:58",
+            "node_id": "unknown",
+            "id": 106
+        },
+        {
+            "code": "iFAST Global Bank: 美元和港币多币种账户利率将分别调整至2.50%和1.80%，自2025年10月2日起生效。",
+            "hasCode": false,
+            "timestamp": 1758216901,
+            "time": "2025-09-19 01:35:01",
+            "node_id": "unknown",
+            "id": 107
+        },
+        {
+            "code": "zzsolo@gmail.com于2025年9月18日下午7:01收到来自City Colleges of Chicago的邮件，主题为：Did you know there are still 8-week classes this fall?",
+            "hasCode": false,
+            "timestamp": 1758222724,
+            "time": "2025-09-19 03:12:04",
+            "node_id": "unknown",
+            "id": 108
+        },
+        {
+            "code": "City Colleges of Chicago: 秋季课程注册最后机会，10月20日开课。",
+            "hasCode": false,
+            "timestamp": 1758222727,
+            "time": "2025-09-19 03:12:07",
+            "node_id": "unknown",
+            "id": 109
+        },
+        {
+            "code": "solemn.zheng@gmail.com于2025年9月18日下午7:12收到来自Google Cloud Platform, Firebase, and APIs的邮件，主题为：Action required: your billing account 01F4FD-ED5A9D-C0A017 is past due or has invalid payment information.",
+            "hasCode": false,
+            "timestamp": 1758222783,
+            "time": "2025-09-19 03:13:03",
+            "node_id": "unknown",
+            "id": 110
+        },
+        {
+            "code": "Google: 您的账户01F4FDED5A9DC0A017逾期或支付信息无效，请更新。",
+            "hasCode": false,
+            "timestamp": 1758222788,
+            "time": "2025-09-19 03:13:08",
+            "node_id": "unknown",
+            "id": 111
+        },
+        {
+            "code": "857584",
+            "hasCode": true,
+            "timestamp": 1758225176,
+            "time": "2025-09-19 03:52:56",
+            "node_id": "unknown",
+            "id": 112
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午08:03收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758225838,
+            "time": "2025-09-19 04:03:58",
+            "node_id": "unknown",
+            "id": 113
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\n1. Most recent payment date and amount:\nPayment of 5 on 29th Aug 2025, by PayPal account mnizzlive.com, Transaction ID is 28146148FR828314H\n2. Name and physical address on the account\nName: zheng zhong; Physical address: I can't remember it because may it was set on 2016\nBYW, now I have my password and also the access to the email linked to my vultr.com account, and the Microsoft Authenticator was set only few weeks ago(I believe you can also check on my account log), are these still not enough to prove my identity?\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 5:05 PM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by Accounts Team.\nHello,\nI would be happy to help you regain access to your account. Please provide the following information to help me verify your account:\n1. Most recent payment date and amount\na. PayPal and Stripe payments must also provide the transaction ID\nb. Credit Card payments must provide the last 4 digits expiration date\n2. Name and physical address on the account\nPlease respond to this ticket with the aforementioned information typed (no screenshots) so we may proceed forward. Thank you for your patience and working with me to resolve this matter.\nKind regards,\nCraig\nSenior Support Customer Representative\nVultr.com\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758225839,
+            "time": "2025-09-19 04:03:59",
+            "node_id": "unknown",
+            "id": 114
+        },
+        {
+            "code": "solemn.zz@gmail.com于2025年9月18日下午8:11收到来自Google Cloud Platform, Firebase, and APIs的邮件，主题为：Action required: your billing account 015B62-0BCE6F-FE3A37 is past due or has invalid payment information.",
+            "hasCode": false,
+            "timestamp": 1758226324,
+            "time": "2025-09-19 04:12:04",
+            "node_id": "unknown",
+            "id": 115
+        },
+        {
+            "code": "Google: 您的账户015B620BCE6FFE3A37逾期或支付信息无效，请更新。",
+            "hasCode": false,
+            "timestamp": 1758226326,
+            "time": "2025-09-19 04:12:06",
+            "node_id": "unknown",
+            "id": 116
+        },
+        {
+            "code": "zzsolo@live.com于2025年9月18日 下午08:56收到来自n8n.io的邮件，主题为：Your free n8n license key to unlock selected paid features",
+            "hasCode": false,
+            "timestamp": 1758229019,
+            "time": "2025-09-19 04:56:59",
+            "node_id": "unknown",
+            "id": 117
+        },
+        {
+            "code": "n8n: 您的社区版已解锁付费功能，许可证密钥为63aaaccdab604a53b84467e0d5ad28f7。",
+            "hasCode": false,
+            "timestamp": 1758229024,
+            "time": "2025-09-19 04:57:04",
+            "node_id": "unknown",
+            "id": 118
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午09:06收到来自n8n.io的邮件，主题为：Your free n8n license key to unlock selected paid features",
+            "hasCode": false,
+            "timestamp": 1758229618,
+            "time": "2025-09-19 05:06:58",
+            "node_id": "unknown",
+            "id": 119
+        },
+        {
+            "code": "nn8n: 您的社区版已解锁付费功能，许可证密钥为208ee6c100094b8193ebf9215ae56c71。",
+            "hasCode": false,
+            "timestamp": 1758229625,
+            "time": "2025-09-19 05:07:05",
+            "node_id": "unknown",
+            "id": 120
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午09:26收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758230818,
+            "time": "2025-09-19 05:26:58",
+            "node_id": "unknown",
+            "id": 121
+        },
+        {
+            "code": "消息已过滤 (总结过滤: Vultr 账户安全)",
+            "hasCode": false,
+            "timestamp": 1758230820,
+            "time": "2025-09-19 05:27:00",
+            "node_id": "unknown",
+            "id": 122
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午09:34收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758231298,
+            "time": "2025-09-19 05:34:58",
+            "node_id": "unknown",
+            "id": 123
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\nFine, thank u for your stupid \"security policy\" which makes user have almost everything but cannot access his account just because of the loss of Microsoft Authenticator code!\nThough I finally find it and it is the card with last 4 digital numbers 6145 and the expiration date is 092029, I would still say your platform rule and customer service and the so called \"security policy\" are all so bullshit!\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 9:25 PM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by Accounts Team.\nHello,\nFor security purposes we cannot provide hints. You will need to review your records and respond here once you can provide the requested information.\nI appreciate your patience and cooperation in this matter. At Vultr we handle account security with the utmost regard.\nKind regards,\nCraig\nSenior Support Customer Representative\nVultr.com\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758231299,
+            "time": "2025-09-19 05:34:59",
+            "node_id": "unknown",
+            "id": 124
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午09:34收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758232130,
+            "time": "2025-09-19 05:48:50",
+            "node_id": "unknown",
+            "id": 125
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\nFine, thank u for your stupid \"security policy\" which makes user have almost everything but cannot access his account just because of the loss of Microsoft Authenticator code!\nThough I finally find it and it is the card with last 4 digital numbers 6145 and the expiration date is 092029, I would still say your platform rule and customer service and the so called \"security policy\" are all so bullshit!\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 9:25 PM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by Accounts Team.\nHello,\nFor security purposes we cannot provide hints. You will need to review your records and respond here once you can provide the requested information.\nI appreciate your patience and cooperation in this matter. At Vultr we handle account security with the utmost regard.\nKind regards,\nCraig\nSenior Support Customer Representative\nVultr.com\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758232131,
+            "time": "2025-09-19 05:48:51",
+            "node_id": "unknown",
+            "id": 126
+        },
+        {
+            "code": "123456",
+            "hasCode": true,
+            "timestamp": 1758232146,
+            "time": "2025-09-19 05:49:06",
+            "node_id": "unknown",
+            "id": 127
+        },
+        {
+            "code": "消息已过滤 (近期消息重复)",
+            "hasCode": false,
+            "timestamp": 1758232147,
+            "time": "2025-09-19 05:49:07",
+            "node_id": "unknown",
+            "id": 128
+        },
+        {
+            "code": "消息已过滤 (近期消息重复)",
+            "hasCode": false,
+            "timestamp": 1758232180,
+            "time": "2025-09-19 05:49:40",
+            "node_id": "unknown",
+            "id": 129
+        },
+        {
+            "code": "消息已过滤 (近期消息重复)",
+            "hasCode": false,
+            "timestamp": 1758232180,
+            "time": "2025-09-19 05:49:40",
+            "node_id": "unknown",
+            "id": 130
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午09:51收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758232318,
+            "time": "2025-09-19 05:51:58",
+            "node_id": "unknown",
+            "id": 131
+        },
+        {
+            "code": "Vultr.com: 账户双重认证已移除，建议设置备用代码。",
+            "hasCode": false,
+            "timestamp": 1758232320,
+            "time": "2025-09-19 05:52:00",
+            "node_id": "unknown",
+            "id": 132
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午10:09收到来自Vultr Support的邮件，主题为：Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758233398,
+            "time": "2025-09-19 06:09:58",
+            "node_id": "unknown",
+            "id": 133
+        },
+        {
+            "code": "Vultr.com: 账户认证设置更新，新增备份双重认证。",
+            "hasCode": false,
+            "timestamp": 1758233401,
+            "time": "2025-09-19 06:10:01",
+            "node_id": "unknown",
+            "id": 134
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午10:13收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758233638,
+            "time": "2025-09-19 06:13:58",
+            "node_id": "unknown",
+            "id": 135
+        },
+        {
+            "code": "Ticket NNJ16OTW has been updated by zhong zheng.\n\nThanks for your support. I just set up an emergency backup code and noted it, I didn't set any authenticator this time.\nBut now, after that operation, why is it still asking me for the emergency code??? Now what should I do? How does the emergency backup code work?\n________________________________\nFrom: Vultr Support \nSent: Thursday, September 18, 2025 9:51 PM\nTo: mnizzlive.com \nSubject: [Ticket:NNJ16OTW] Re:Fw: Vultr.com Account Security Update\n[Vultr.com] [Log In] \nTicket NNJ16OTW has been updated by Accounts Team.\nHello,\nThank you for providing the requested information. I have removed your TwoFactor Authentication from your account. We recommend setting up emergency backup codes. They can be used when your twofactor authentication device is unavailable. \"https:my.vultr.comsettingstwofactor. \nIf you need additional assistance, our support team is here to help you in any way we can.\nBest Regards,\nTara T.\nSenior Customer Support Representative\nVultr.com\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal.\nThank you for choosing Vultr.com! \nCopyright The Constant Company, LLC. All rights reserved. \n\nTo update or check the progress of your ticket, please reply directly to this email or manage the ticket from your client portal. \n\nThank you for choosing Vultr.com! \n Copyright The Constant Company, LLC. All rights reserved.",
+            "hasCode": false,
+            "timestamp": 1758233640,
+            "time": "2025-09-19 06:14:00",
+            "node_id": "unknown",
+            "id": 136
+        },
+        {
+            "code": "mnizz@live.com于2025年9月18日 下午10:16收到来自Vultr Support的邮件，主题为：[Ticket:NNJ-16OTW] Re:Fw: Vultr.com - Account Security Update",
+            "hasCode": false,
+            "timestamp": 1758233818,
+            "time": "2025-09-19 06:16:58",
+            "node_id": "unknown",
+            "id": 137
+        },
+        {
+            "code": "Vultr.com: 账户的双重认证已被移除，建议设置备用代码。",
+            "hasCode": false,
+            "timestamp": 1758233820,
+            "time": "2025-09-19 06:17:00",
+            "node_id": "unknown",
+            "id": 138
+        },
+        {
+            "code": "AI API 错误或超时",
+            "hasCode": false,
+            "timestamp": 1758424980,
+            "time": "2025-09-21 11:23:00",
+            "node_id": "unknown",
+            "id": 139
+        },
+        {
+            "code": "123456",
+            "hasCode": true,
+            "timestamp": 1758425010,
+            "time": "2025-09-21 11:23:30",
+            "node_id": "unknown",
+            "id": 140
+        },
+        {
+            "code": "654321",
+            "hasCode": true,
+            "timestamp": 1758425315,
+            "time": "2025-09-21 11:28:35",
+            "node_id": "unknown",
+            "id": 141
+        },
+        {
+            "code": "987654",
+            "hasCode": true,
+            "timestamp": 1758440459,
+            "time": "2025-09-21 15:40:59",
+            "node_id": "unknown",
+            "id": 142
+        },
+        {
+            "code": "654321",
+            "hasCode": true,
+            "timestamp": 1758440681,
+            "time": "2025-09-21 15:44:41",
+            "node_id": "unknown",
+            "id": 143
+        },
+        {
+            "code": "987654",
+            "hasCode": true,
+            "timestamp": 1758440740,
+            "time": "2025-09-21 15:45:40",
+            "node_id": "unknown",
+            "id": 144
+        },
+        {
+            "code": "123456",
+            "hasCode": true,
+            "timestamp": 1758440758,
+            "time": "2025-09-21 15:45:58",
+            "node_id": "unknown",
+            "id": 145
+        },
+        {
+            "code": "123456",
+            "hasCode": true,
+            "timestamp": 1758440917,
+            "time": "2025-09-21 15:48:37",
+            "node_id": "unknown",
+            "id": 146
+        },
+        {
+            "code": "TEST123",
+            "hasCode": true,
+            "timestamp": 1758440973,
+            "time": "2025-09-21 15:49:33",
+            "node_id": "unknown",
+            "id": 147
+        },
+        {
+            "code": "TEST456",
+            "hasCode": true,
+            "timestamp": 1758441426,
+            "time": "2025-09-21 15:57:06",
+            "node_id": "unknown",
+            "id": 148
+        },
+        {
+            "code": "FIXED123",
+            "hasCode": true,
+            "timestamp": 1758441848,
+            "time": "2025-09-21 16:04:08",
+            "node_id": "unknown",
+            "id": 149
+        },
+        {
+            "code": "TEST123",
+            "hasCode": true,
+            "timestamp": 1758441988,
+            "time": "2025-09-21 16:06:28",
+            "node_id": "unknown",
+            "id": 150
+        }
+    ],
+    "last_id": 150
+}
