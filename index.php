@@ -160,6 +160,9 @@
         let screensaverInterval = null;
         let isScreensaverActive = false;
 
+		// 添加这个跟触发系统重置相关的变量声明
+		// let lastDisplayStartTime = 0;
+
         // 连接状态监控
         function updateConnectionState(newState) {
             connectionState = newState;
@@ -240,6 +243,8 @@
 
         function adjustTextToFit(element, text) {
             // 创建测试元素进行精确计算
+			console.time('adjustTextToFit');
+			let loopCount = 0;
             const testElement = document.createElement('div');
             testElement.style.position = 'absolute';
             testElement.style.visibility = 'hidden';
@@ -252,6 +257,7 @@
             let fontSize = 40, maxChars = 5;
             while (fontSize >= 1) {
                 while (maxChars <= 50) {
+					loopCount++;
                     const formattedCode = formatCodeText(text, maxChars);
                     testElement.textContent = formattedCode;
                     testElement.style.fontSize = fontSize + 'vw';
@@ -272,7 +278,8 @@
                             fontSizeSlider.value = fontSize;
                             fontSizeValue.textContent = fontSize;
                         }
-
+						console.timeEnd('adjustTextToFit');
+						console.log('循环次数:', loopCount);
                         return { fontSize, maxChars, formattedCode };
                     }
                     maxChars += 1;
@@ -286,6 +293,8 @@
             const fallbackCode = formatCodeText(text, 50);
             element.textContent = fallbackCode;
             element.style.fontSize = '1vw';
+			console.timeEnd('adjustTextToFit');
+			console.log('循环次数:', loopCount);
             return { fontSize: 1, maxChars: 50, formattedCode: fallbackCode };
         }
 
@@ -978,57 +987,36 @@
             return code.replace(/\d/g, d => chineseNumbers[d] || d);
         }
 
-        // --- Speech Synthesis ---
+        // 使用 setTimeout 将语音播报异步化，减少主线程阻塞
         function speakCode(text, force = false, onEndCallback = null) {
             if (!force && (!isSpeechEnabled || !('speechSynthesis' in window))) {
                 if (onEndCallback) onEndCallback();
                 return;
             }
-            window.speechSynthesis.cancel();
             
-            // 应用高级语音修复方案
-            let speechText = fixSpeechForCode(text);
-            
-            // 如果修复方案1无效，尝试备用方案
-            const utterance = new SpeechSynthesisUtterance(speechText);
-            utterance.lang = 'zh-CN';
-            utterance.rate = parseFloat(speechRateSlider.value);
-            
-            // 添加调试日志
-            console.log('语音播报调试:', {
-                original: text,
-                processed: speechText,
-                isPureDigits: /^\d+$/.test(text),
-                hasDigits: /\d/.test(text)
-            });
-            
-            utterance.onstart = () => { readingStatus.style.display = 'block'; };
-            utterance.onend = () => { 
-                readingStatus.style.display = 'none';
-                if (onEndCallback) onEndCallback();
-            };
-            
-            utterance.onerror = (event) => {
-                console.error('语音播报错误:', event.error);
-                // 如果主方案出错，尝试备用方案
-                if (event.error && /^\d+$/.test(text)) {
-                    console.log('尝试备用方案: 中文数字');
-                    const backupText = alternativeFixSpeech(text);
-                    const backupUtterance = new SpeechSynthesisUtterance(backupText);
-                    backupUtterance.lang = 'zh-CN';
-                    backupUtterance.rate = parseFloat(speechRateSlider.value);
-                    backupUtterance.onstart = () => { readingStatus.style.display = 'block'; };
-                    backupUtterance.onend = () => { 
-                        readingStatus.style.display = 'none';
-                        if (onEndCallback) onEndCallback();
-                    };
-                    window.speechSynthesis.speak(backupUtterance);
-                    return;
-                }
-                if (onEndCallback) onEndCallback();
-            };
-            
-            window.speechSynthesis.speak(utterance);
+            // 关键：使用 setTimeout 异步化语音播报
+            setTimeout(() => {
+                window.speechSynthesis.cancel();
+                
+                let speechText = fixSpeechForCode(text);
+                const utterance = new SpeechSynthesisUtterance(speechText);
+                utterance.lang = 'zh-CN';
+                utterance.rate = parseFloat(speechRateSlider.value);
+                
+                utterance.onstart = () => { readingStatus.style.display = 'block'; };
+                utterance.onend = () => { 
+                    readingStatus.style.display = 'none';
+                    if (onEndCallback) setTimeout(onEndCallback, 0); // 也异步化回调
+                };
+                
+                utterance.onerror = (event) => {
+                    console.error('语音播报错误:', event.error);
+                    readingStatus.style.display = 'none';
+                    if (onEndCallback) setTimeout(onEndCallback, 0);
+                };
+                
+                window.speechSynthesis.speak(utterance);
+            }, 0);
         }
 
         // --- Fullscreen Logic ---
@@ -1362,10 +1350,10 @@
                 }
             }, 30000); // 每30秒检查一次
 
-            // 启动系统健康检查 - 防止系统卡住
+            // 启动系统健康检查 - 防止系统卡住。实际上却成为了bug的来源！
             setInterval(() => {
+/* Bug的来源！
                 const now = Date.now();
-
                 // 如果系统显示状态异常超过30秒，强制重置
                 if (isDisplaying && codeQueue.length > 0) {
                     // 检查是否卡住
@@ -1376,6 +1364,7 @@
                         forceSystemReset();
                     }
                 }
+*/ 
 
                 // 如果队列中有消息但未显示，尝试处理
                 if (!isDisplaying && codeQueue.length > 0) {
