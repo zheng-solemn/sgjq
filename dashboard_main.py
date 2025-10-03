@@ -102,19 +102,20 @@ class DashboardApp:
         button_frame_2.pack(fill='x', expand=True, padx=20, pady=15)
         
         buttons_row1 = ["检测游戏窗口", "开始识别", "按钮3", "按钮4"]
-        buttons_row2 = ["查看区域划分", "显示检测区域", "按钮7", "退出"]
+        buttons_row2 = ["查看区域划分", "显示检测区域", "查看节点分布", "退出"]
 
         for i, text in enumerate(buttons_row1):
             button = ttk.Button(button_frame_1, text=text)
             button.pack(side="left", fill="x", expand=True, padx=10)
             if i == 0: button.config(command=self.detect_game_window)
-            elif i == 1: button.config(command=lambda: self.start_recognition(0.8))
+            elif i == 1: button.config(command=lambda: self.start_recognition(0.7))
             
         for i, text in enumerate(buttons_row2):
             button = ttk.Button(button_frame_2, text=text)
             button.pack(side="left", fill="x", expand=True, padx=10)
             if i == 0: button.config(command=self.visualize_regions)
             elif i == 1: button.config(command=self.visualize_plus_region)
+            elif i == 2: button.config(command=self.visualize_all_nodes)
             elif i == 3: button.config(command=self.on_closing)
 
     def log_to_dashboard(self, message: str):
@@ -169,23 +170,33 @@ class DashboardApp:
             self.log_to_dashboard("[失败] 未检测到游戏窗口。")
 
     def start_recognition(self, threshold: float):
+        # 1. 生成唯一的识别ID
+        recognition_id = time.strftime("%Y%m%d%H%M%S")
+        
         self.log_to_dashboard("\n" + "="*50 + "\n")
-        self.log_to_dashboard(f"--- 开始新一轮识别 (阈值={threshold}, 时间={time.strftime('%H:%M:%S')}) ---")
+        self.log_to_dashboard(f"--- 开始新一轮识别 [ID: {recognition_id}] ---")
+        self.log_to_dashboard(f"使用阈值: {threshold}")
+
         if not self.window_capture or not self.game_analyzer:
             self.log_to_dashboard("[错误] 核心组件未初始化。")
             return
+            
         screenshot = self.window_capture.get_screenshot()
-        if screenshot.size == 0:
+        if screenshot is None or screenshot.size == 0:
             self.log_to_dashboard("[错误] 获取截图失败。")
             return
-        save_path = Path(__file__).parent / "realtime_screenshot.png"
+            
+        save_path = Path(__file__).parent / f"screenshot_{recognition_id}.png"
         cv2.imwrite(str(save_path), screenshot)
-        self.log_to_dashboard(f"2. 截图成功，已保存。")
-        self.log_to_dashboard("3. 正在提交分析 (UI可能会卡顿)...")
+        self.log_to_dashboard(f"截图成功，已保存至 {save_path.name}")
+        
+        self.log_to_dashboard("正在提交分析...")
         self.root.update_idletasks()
+        
         try:
+            # (未来) 可以在这里将 recognition_id 传递给分析器
             report = self.game_analyzer.analyze_screenshot(screenshot, match_threshold=threshold)
-            self.log_to_dashboard("4. 分析完成！")
+            self.log_to_dashboard("分析完成！")
             self.log_to_dashboard(report)
         except Exception as e:
             self.log_to_dashboard(f"[严重错误] 分析过程中发生错误: {e}")
@@ -250,6 +261,99 @@ class DashboardApp:
             self.log_to_dashboard("已弹出“Plus Shape Region”窗口。")
         except Exception as e:
             self.log_to_dashboard(f"[严重错误] 生成“+”号可视化时出错: {e}")
+        finally:
+            self._force_set_topmost()
+
+    def visualize_all_nodes(self):
+        """
+        按钮7功能: 可视化棋盘上所有的129个节点。
+        """
+        self.log_to_dashboard("\n" + "="*50 + "\n")
+        self.log_to_dashboard("--- 开始生成全节点分布图 ---")
+        if not self.window_capture or not self.game_analyzer:
+            self.log_to_dashboard("[错误] 核心组件未初始化。")
+            return
+        
+        screenshot = self.window_capture.get_screenshot()
+        if screenshot is None or screenshot.size == 0:
+            self.log_to_dashboard("[错误] 获取截图失败。")
+            return
+
+        try:
+            # 1. 获取所有棋子的中心点 (代表了100个节点)
+            # We need to get the raw detections from the analyzer
+            all_detections = self.game_analyzer.analyze_screenshot(screenshot, match_threshold=0.7, return_detections=True)
+            if not all_detections:
+                self.log_to_dashboard("[错误] 未识别到任何棋子，无法计算节点。")
+                return
+            
+            piece_nodes = []
+            for det in all_detections:
+                x1, y1, x2, y2 = det.bbox
+                cx = (x1 + x2) / 2
+                cy = (y1 + y2) / 2
+                piece_nodes.append((int(cx), int(cy)))
+
+            # 2. 获取中央区域的9个节点 + 5个行营节点
+            # We'll reuse the logic from our analysis scripts
+            regions = self.game_analyzer.get_player_regions(screenshot)
+            
+            # Find central nodes
+            central_nodes = []
+            if "中央" in regions:
+                x1, y1, x2, y2 = map(int, regions["中央"])
+                central_image = screenshot[y1:y2, x1:x2]
+                gray = cv2.cvtColor(central_image, cv2.COLOR_BGR2GRAY)
+                _, binary = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY_INV)
+                corners = cv2.goodFeaturesToTrack(binary, 100, 0.02, 10)
+                if corners is not None:
+                    points = np.intp(corners).reshape(-1, 2)
+                    clustering = DBSCAN(eps=20, min_samples=1).fit(points)
+                    for label in set(clustering.labels_):
+                        pts = points[clustering.labels_ == label]
+                        cx, cy = np.mean(pts, axis=0)
+                        central_nodes.append((int(cx) + x1, int(cy) + y1)) # Re-add offset
+
+            # Find camp nodes (xingying)
+            camp_nodes = []
+            # This is a simplified version of camp detection for integration
+            hsv = cv2.cvtColor(screenshot, cv2.COLOR_BGR2HSV)
+            lower_orange_yellow = np.array([15, 100, 100])
+            upper_orange_yellow = np.array([35, 255, 255])
+            mask = cv2.inRange(hsv, lower_orange_yellow, upper_orange_yellow)
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            for cnt in contours:
+                if 100 < cv2.contourArea(cnt) < 1000:
+                    M = cv2.moments(cnt)
+                    if M["m00"] != 0:
+                        cx = int(M["m10"] / M["m00"])
+                        cy = int(M["m01"] / M["m00"])
+                        camp_nodes.append((cx, cy))
+
+            # 3. Combine all nodes and remove duplicates
+            all_nodes = piece_nodes + central_nodes + camp_nodes
+            
+            # Use clustering to merge very close points (e.g., a piece on a camp)
+            final_nodes_clustering = DBSCAN(eps=15, min_samples=1).fit(all_nodes)
+            final_nodes = []
+            for label in set(final_nodes_clustering.labels_):
+                pts = np.array(all_nodes)[final_nodes_clustering.labels_ == label]
+                cx, cy = np.mean(pts, axis=0)
+                final_nodes.append((int(cx), int(cy)))
+
+            self.log_to_dashboard(f"共找到 {len(final_nodes)} 个独立节点。")
+
+            # 4. Draw the nodes on the image
+            overlay = screenshot.copy()
+            for (cx, cy) in final_nodes:
+                cv2.circle(overlay, (cx, cy), 5, (0, 255, 0), -1) # Green filled circle
+                cv2.circle(overlay, (cx, cy), 6, (0, 0, 0), 1)   # Black outline
+
+            cv2.imshow("All Nodes Distribution", overlay)
+            self.log_to_dashboard("已弹出“All Nodes Distribution”窗口。")
+
+        except Exception as e:
+            self.log_to_dashboard(f"[严重错误] 生成节点分布图时出错: {e}")
         finally:
             self._force_set_topmost()
 

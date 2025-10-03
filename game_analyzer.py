@@ -150,29 +150,29 @@ class GameAnalyzer:
         detections = standard_non_max_suppression(matches, iou_threshold=0.3)
         return self._get_regions_from_clusters(detections, img_w, img_h)
 
-    def analyze_screenshot(self, screenshot: np.ndarray, match_threshold: float = 0.7) -> str:
+    def analyze_screenshot(self, screenshot: np.ndarray, match_threshold: float = 0.7, return_detections: bool = False):
         """
         分析截图，生成详细的棋盘识别报告。
         最终版“颜色掩膜”逻辑。
+        可选择返回原始检测列表。
         """
         img_h, img_w, _ = screenshot.shape
         
-        # 1. 按颜色组织模板
         templates_by_color: Dict[str, List] = {}
         for t in self.templates_manager.get_all_templates():
             if t.color not in templates_by_color:
                 templates_by_color[t.color] = []
             templates_by_color[t.color].append(t)
 
-        # 2. 使用新的颜色掩膜匹配算法
-        # 注意：阈值需要调整，因为现在是在更干净的图像上匹配，匹配度会更高
         matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, threshold=match_threshold)
         detections = standard_non_max_suppression(matches, iou_threshold=0.3)
         
+        if return_detections:
+            return detections
+
         if not detections:
             return "未在截图中识别到任何棋子。"
 
-        # 3. 按颜色对所有棋子进行分组
         pieces_by_color: Dict[str, List[DetectionResult]] = {}
         for det in detections:
             color = det.template.color
@@ -180,7 +180,6 @@ class GameAnalyzer:
                 pieces_by_color[color] = []
             pieces_by_color[color].append(det)
             
-        # 4. 为每个颜色分组确定其地理位置
         player_locations: Dict[str, str] = {}
         for color, dets in pieces_by_color.items():
             if not dets: continue
@@ -192,7 +191,6 @@ class GameAnalyzer:
             else: location = "右侧"
             player_locations[color] = location
 
-        # 5. 生成报告
         report = [
             f"--- 棋盘识别报告 (颜色掩膜算法, 阈值={match_threshold}) ---",
             f"总计识别棋子数量: {len(detections)}",
