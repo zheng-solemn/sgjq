@@ -1,0 +1,40 @@
+<?php
+/**
+ * 消息处理与验证码提取系统
+ * 功能：垃圾消息过滤、AI分析、验证码提取等完整功能
+ */
+
+// ========================================
+// 基础配置与初始化
+// ========================================
+
+// 设置响应头，防止任何输出问题
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+// 设置时区，解决500 Internal Server Error
+date_default_timezone_set('Asia/Shanghai');
+
+// 关闭错误显示，只记录到日志
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+
+// ========================================
+// 常量定义与配置
+// ========================================
+
+// AI API配置
+const AI_API_KEY = 'YOUR_API_KEY_HERE'; // 请替换为您的实际API密钥
+const AI_API_URL = 'https://api.x.ai/v1/chat/completions';
+const AI_MODEL = 'grok-3';
+
+// 文件路径定义
+$codeFile = 'code_data.txt';        // 存储处理结果的文件
+$checkLog = 'check_log.txt';        // 日志文件，用于调试
+$spamFilterFile = 'spamfilter.txt'; // 统一的垃圾信息过滤关键字文件
+$debug = true;
+
+// 重要关键字白名单
