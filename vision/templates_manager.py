@@ -36,12 +36,24 @@ class TemplatesManager:
 
     def _parse_filename(self, filename: str) -> Optional[Dict]:
         """
-        严格解析标准文件名: color_piece_position_index.png
+        Parses standard and special filenames.
+        - Standard: color_piece_position_index.png
+        - Special: template_xingying.png
         """
+        # Handle special case for the camp template
+        if filename == "template_xingying.png":
+            return {
+                "color": "neutral",  # Assign a neutral color
+                "piece_type": "xingying", # Camp
+                "position": "none",
+                "index": 0,
+            }
+
+        # Original parsing logic for standard piece templates
         try:
             parts = filename.replace(".png", "").split('_')
             if len(parts) != 4:
-                return None # 不符合格式则直接跳过
+                return None # Skip non-standard files
 
             color, piece_type, position, index_str = parts
             index = int(index_str)

@@ -55,6 +55,9 @@ def find_all_matches_with_color_mask(image: np.ndarray, templates_by_color: Dict
     hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
     for color, templates in templates_by_color.items():
+        # Skip colors that don't have defined ranges (shouldn't happen with proper setup)
+        if color not in color_ranges:
+            continue
         # 1. 创建该颜色的掩膜
         lower_bound = np.array(color_ranges[color]['lower'])
         upper_bound = np.array(color_ranges[color]['upper'])
@@ -144,6 +147,9 @@ class GameAnalyzer:
         img_h, img_w, _ = screenshot.shape
         templates_by_color: Dict[str, List] = {}
         for t in self.templates_manager.get_all_templates():
+            # Skip camp templates as they are not used in piece detection
+            if t.piece_type == "xingying":
+                continue
             if t.color not in templates_by_color: templates_by_color[t.color] = []
             templates_by_color[t.color].append(t)
         matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, threshold=match_threshold)
@@ -160,6 +166,9 @@ class GameAnalyzer:
         
         templates_by_color: Dict[str, List] = {}
         for t in self.templates_manager.get_all_templates():
+            # Skip camp templates as they are not used in piece detection
+            if t.piece_type == "xingying":
+                continue
             if t.color not in templates_by_color:
                 templates_by_color[t.color] = []
             templates_by_color[t.color].append(t)

@@ -1,5 +1,0 @@
-feat: Final perfect version with flawless algorithm
-
-This version integrates the ultimate Color Mask recognition algorithm with the correct user interface. It has passed all tests and is considered the final milestone.
-
-Backup timestamp: 2025/10/03 Fri 13:45:52
