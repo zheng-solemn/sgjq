@@ -1,0 +1,9 @@
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\tkinter\__init__.py", line 1892, in __call__
+    return self.func(*args)
+  File "E:\SGJQ_CC\dashboard_main.py", line 130, in <lambda>
+    elif i == 1: button.config(command=lambda: self.start_recognition(0.8))
+  File "E:\SGJQ_CC\dashboard_main.py", line 306, in start_recognition
+    counts = Counter(p.template.color for p in pieces)
+NameError: name 'Counter' is not defined

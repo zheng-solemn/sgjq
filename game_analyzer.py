@@ -1,24 +1,58 @@
 import cv2
 import numpy as np
 from pathlib import Path
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Any
 from collections import Counter
 from sklearn.cluster import KMeans
 from dataclasses import dataclass
+from multiprocessing import Pool, cpu_count
 
 # --- 导入核心模块 ---
 from vision.templates_manager import TemplatesManager
 
 # ==============================================================================
-# --- 核心算法模块（万法归一：将所有依赖项直接写入本文件） ---
+# --- 并行处理工作函数 (必须定义在顶层) ---
+# ==============================================================================
+def _parallel_worker(args):
+    image, templates, color_ranges, threshold, color_name = args
+    results = []
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    lower_bound = np.array(color_ranges[color_name]['lower'])
+    upper_bound = np.array(color_ranges[color_name]['upper'])
+    mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
+    gray_masked_image = cv2.bitwise_and(image, image, mask=mask)
+    gray_masked_image = cv2.cvtColor(gray_masked_image, cv2.COLOR_BGR2GRAY)
+
+    for template in templates:
+        hsv_template = cv2.cvtColor(template.image, cv2.COLOR_BGR2HSV)
+        template_mask = cv2.inRange(hsv_template, lower_bound, upper_bound)
+        masked_template = cv2.bitwise_and(template.image, template.image, mask=template_mask)
+        gray_masked_template = cv2.cvtColor(masked_template, cv2.COLOR_BGR2GRAY)
+
+        if gray_masked_template.shape[0] > gray_masked_image.shape[0] or \
+           gray_masked_template.shape[1] > gray_masked_image.shape[1] or \
+           np.sum(gray_masked_template) == 0:
+            continue
+
+        match_result = cv2.matchTemplate(gray_masked_image, gray_masked_template, cv2.TM_CCOEFF_NORMED)
+        locations = np.where(match_result >= threshold)
+
+        for pt in zip(*locations[::-1]):
+            confidence = match_result[pt[1], pt[0]]
+            results.append(DetectionResult(template=template, location=pt, confidence=confidence))
+
+    return results
+
+# ==============================================================================
+# --- 核心算法模块 ---
 # ==============================================================================
 
 @dataclass
 class DetectionResult:
-    """用于存储单个检测结果的数据类"""
-    template: object # 使用通用对象以避免循环导入
+    template: object
     location: tuple
     confidence: float
+
     @property
     def bbox(self) -> Tuple[int, int, int, int]:
         x1, y1 = self.location
@@ -26,8 +60,15 @@ class DetectionResult:
         y2 = y1 + self.template.shape[1]
         return (x1, y1, x2, y2)
 
+    @property
+    def piece_name(self) -> str:
+        return self.template.piece_type
+
+    @property
+    def color(self) -> str:
+        return self.template.color
+
 def standard_non_max_suppression(detections: List[DetectionResult], iou_threshold: float) -> List[DetectionResult]:
-    """【100%成功验证版】标准的、基于IoU的非极大值抑制。"""
     if not detections: return []
     detections.sort(key=lambda x: x.confidence, reverse=True)
     final_detections = []
@@ -47,74 +88,129 @@ def standard_non_max_suppression(detections: List[DetectionResult], iou_threshol
         detections=remaining
     return final_detections
 
-def find_all_matches_with_color_mask(image: np.ndarray, templates_by_color: Dict[str, List], color_ranges: Dict, threshold: float) -> List[DetectionResult]:
-    """
-    最终版匹配算法：使用HSV颜色掩膜进行模板匹配，精确、鲁棒。
-    """
-    results = []
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+# --- Constants for Piece Roster and Formatting ---
+FULL_ROSTER = {
+    "司令": 1, "军长": 1, "师长": 2, "旅长": 2, "团长": 2, "营长": 2,
+    "连长": 3, "排长": 3, "工兵": 3, "地雷": 3, "炸弹": 2, "军旗": 1
+}
 
-    for color, templates in templates_by_color.items():
-        # Skip colors that don't have defined ranges (shouldn't happen with proper setup)
-        if color not in color_ranges:
-            continue
-        # 1. 创建该颜色的掩膜
-        lower_bound = np.array(color_ranges[color]['lower'])
-        upper_bound = np.array(color_ranges[color]['upper'])
-        mask = cv2.inRange(hsv_image, lower_bound, upper_bound)
-        
-        # 2. 将掩膜应用到原始图像的灰度版本上
-        masked_image = cv2.bitwise_and(image, image, mask=mask)
-        gray_masked_image = cv2.cvtColor(masked_image, cv2.COLOR_BGR2GRAY)
-
-        for template in templates:
-            # 3. 同样的方法处理模板，确保匹配对象的一致性
-            hsv_template = cv2.cvtColor(template.image, cv2.COLOR_BGR2HSV)
-            template_mask = cv2.inRange(hsv_template, lower_bound, upper_bound)
-            masked_template = cv2.bitwise_and(template.image, template.image, mask=template_mask)
-            gray_masked_template = cv2.cvtColor(masked_template, cv2.COLOR_BGR2GRAY)
-
-            if gray_masked_template.shape[0] > gray_masked_image.shape[0] or \
-               gray_masked_template.shape[1] > gray_masked_image.shape[1] or \
-               np.sum(gray_masked_template) == 0: # 跳过空的模板掩码
-                continue
-            
-            # 4. 在掩膜后的灰度图上进行匹配
-            match_result = cv2.matchTemplate(gray_masked_image, gray_masked_template, cv2.TM_CCOEFF_NORMED)
-            locations = np.where(match_result >= threshold)
-            
-            for pt in zip(*locations[::-1]):
-                confidence = match_result[pt[1], pt[0]]
-                results.append(DetectionResult(template=template, location=pt, confidence=confidence))
-                
-    return results
+COLOR_TAG_MAP = {
+    "司令": "p_purple", "军长": "p_red", "师长": "p_orange", "旅长": "p_yellow",
+    "团长": "p_blue", "工兵": "p_green", "炸弹": "p_bold_red", "军旗": "p_cyan"
+}
 
 class GameAnalyzer:
-    """
-    游戏分析器 (最终版 - 颜色掩膜)
-    """
     def __init__(self, templates_path: str):
         self.templates_manager = TemplatesManager(templates_path)
         if not self.templates_manager.get_all_templates():
             raise Exception("错误: 模板加载失败。")
-        
-        # 经过调试的、精确的HSV颜色范围
         self.hsv_color_ranges = {
             'blue':   {'lower': [100, 80, 80], 'upper': [130, 255, 255]},
             'green':  {'lower': [35, 40, 40], 'upper': [95, 255, 255]},
             'orange': {'lower': [5, 150, 150], 'upper': [20, 255, 255]},
             'purple': {'lower': [135, 80, 80], 'upper': [160, 255, 255]}
         }
-        
         self.cn_to_en_map = {
             "司令": "commander", "军长": "general", "师长": "major", "旅长": "colonel",
-            "团长": "captain", "营长": "battalion", "连长": "lieutenant", "排长": "sergeant", 
+            "团长": "captain", "营长": "battalion", "连长": "lieutenant", "排长": "sergeant",
             "工兵": "miner", "地雷": "landmine", "炸弹": "bomb", "军旗": "flag"
         }
-        self.all_piece_types_cn = list(self.cn_to_en_map.keys())
+        self.pool = Pool(processes=cpu_count())
+
+    def analyze_screenshot(self, screenshot: np.ndarray, match_threshold: float = 0.7, return_detections: bool = False) -> Any:
+        templates_by_color: Dict[str, List] = {}
+        for t in self.templates_manager.get_all_templates():
+            if t.piece_type == "xingying": continue
+            if t.color not in templates_by_color: templates_by_color[t.color] = []
+            templates_by_color[t.color].append(t)
+
+        tasks = [(screenshot, templates, self.hsv_color_ranges, match_threshold, color) for color, templates in templates_by_color.items()]
+
+        results_from_pool = self.pool.map(_parallel_worker, tasks)
+        all_matches = [item for sublist in results_from_pool for item in sublist]
+        detections = standard_non_max_suppression(all_matches, iou_threshold=0.3)
+
+        if return_detections:
+            return detections
+
+        total_detection_count = len(detections)
+
+        if not detections:
+            return {
+                'total_count': 0,
+                'report_items': [{'type': 'header', 'text': "未在截图中识别到任何棋子。"}]
+            }
+
+        img_h, img_w, _ = screenshot.shape
+        pieces_by_color: Dict[str, List[DetectionResult]] = {}
+        for det in detections:
+            color = det.template.color
+            if color not in pieces_by_color: pieces_by_color[color] = []
+            pieces_by_color[color].append(det)
+
+        player_locations: Dict[str, str] = {}
+        for color, dets in pieces_by_color.items():
+            if not dets: continue
+            avg_x = np.mean([d.location[0] for d in dets]); avg_y = np.mean([d.location[1] for d in dets])
+            if avg_y < img_h * 0.45: location = "上方"
+            elif avg_y > img_h * 0.55: location = "下方"
+            elif avg_x < img_w / 2: location = "左侧"
+            else: location = "右侧"
+            player_locations[color] = location
+
+        report_items = []
+        location_order = {"上方": 0, "左侧": 1, "下方": 2, "右侧": 3}
+        sorted_players = sorted(pieces_by_color.items(), key=lambda item: location_order.get(player_locations.get(item[0]), 99))
+
+        for color, dets in sorted_players:
+            location = player_locations.get(color, "未知")
+            player_piece_count = len(dets)
+            report_items.append({
+                'type': 'header',
+                'text': f"--- 【{location}玩家】 ({color.capitalize()}) ---（剩余棋子：{player_piece_count}个）",
+                'color': color
+            })
+
+            counts = Counter(d.template.piece_type for d in dets)
+
+            player_report_data = []
+            for piece_cn, piece_en in self.cn_to_en_map.items():
+                current_count = counts.get(piece_en, 0)
+                piece_info = {
+                    'text': f"{piece_cn}x{current_count}",
+                    'color_tag': COLOR_TAG_MAP.get(piece_cn, 'p_default'),
+                    'is_eliminated': current_count == 0
+                }
+                player_report_data.append(piece_info)
+
+            report_items.append({'type': 'piece_line', 'pieces': player_report_data})
+            report_items.append({'type': 'separator'})
+
+        return {
+            'total_count': total_detection_count,
+            'report_items': report_items
+        }
+
+    def get_all_detections(self, board_image: np.ndarray, match_threshold: float = 0.8) -> List[DetectionResult]:
+        """兼容性方法 - 调用analyze_screenshot获取检测结果"""
+        return self.analyze_screenshot(board_image, match_threshold, return_detections=True)
+
+    def get_player_regions(self, screenshot: np.ndarray, match_threshold: float = 0.7) -> Dict[str, Tuple[int, int, int, int]]:
+        img_h, img_w, _ = screenshot.shape
+        templates_by_color: Dict[str, List] = {}
+        for t in self.templates_manager.get_all_templates():
+            if t.piece_type == "xingying": continue
+            if t.color not in templates_by_color: templates_by_color[t.color] = []
+            templates_by_color[t.color].append(t)
+
+        tasks = [(screenshot, templates, self.hsv_color_ranges, match_threshold, color) for color, templates in templates_by_color.items()]
+        results_from_pool = self.pool.map(_parallel_worker, tasks)
+        all_matches = [item for sublist in results_from_pool for item in sublist]
+
+        detections = standard_non_max_suppression(all_matches, iou_threshold=0.3)
+        return self._get_regions_from_clusters(detections, img_w, img_h)
 
     def _get_regions_from_clusters(self, detections: List[DetectionResult], img_w: int, img_h: int) -> Dict[str, Tuple[int, int, int, int]]:
-        # ... (此函数保持不变) ...
         if not detections: return {}
         num_clusters = min(4, len(detections))
         if num_clusters < 4: return {"未知": (0,0,img_w,img_h)}
@@ -142,90 +238,18 @@ class GameAnalyzer:
             player_bounds["中央"] = (central_x1, central_y1, central_x2, central_y2)
         return player_bounds
 
-    def get_player_regions(self, screenshot: np.ndarray, match_threshold: float = 0.7) -> Dict[str, Tuple[int, int, int, int]]:
-        # ... (此函数现在仅用于可视化，但仍需更新其内部调用) ...
-        img_h, img_w, _ = screenshot.shape
-        templates_by_color: Dict[str, List] = {}
-        for t in self.templates_manager.get_all_templates():
-            # Skip camp templates as they are not used in piece detection
-            if t.piece_type == "xingying":
-                continue
-            if t.color not in templates_by_color: templates_by_color[t.color] = []
-            templates_by_color[t.color].append(t)
-        matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, threshold=match_threshold)
-        detections = standard_non_max_suppression(matches, iou_threshold=0.3)
-        return self._get_regions_from_clusters(detections, img_w, img_h)
+    def visualize_regions_on_image(self, image: np.ndarray, regions: Dict) -> np.ndarray:
+        vis_image = image.copy()
+        colors = {
+            "上方": (255, 0, 0), "下方": (0, 255, 0),
+            "左侧": (0, 0, 255), "右侧": (255, 255, 0),
+            "中央": (255, 0, 255)
+        }
+        for name, (x1, y1, x2, y2) in regions.items():
+            cv2.rectangle(vis_image, (x1, y1), (x2, y2), colors.get(name, (255,255,255)), 2)
+            cv2.putText(vis_image, name, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, colors.get(name, (255,255,255)), 2)
+        return vis_image
 
-    def analyze_screenshot(self, screenshot: np.ndarray, match_threshold: float = 0.7, return_detections: bool = False):
-        """
-        分析截图，生成详细的棋盘识别报告。
-        最终版“颜色掩膜”逻辑。
-        可选择返回原始检测列表。
-        """
-        img_h, img_w, _ = screenshot.shape
-        
-        templates_by_color: Dict[str, List] = {}
-        for t in self.templates_manager.get_all_templates():
-            # Skip camp templates as they are not used in piece detection
-            if t.piece_type == "xingying":
-                continue
-            if t.color not in templates_by_color:
-                templates_by_color[t.color] = []
-            templates_by_color[t.color].append(t)
-
-        matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, threshold=match_threshold)
-        detections = standard_non_max_suppression(matches, iou_threshold=0.3)
-        
-        if return_detections:
-            return detections
-
-        if not detections:
-            return "未在截图中识别到任何棋子。"
-
-        pieces_by_color: Dict[str, List[DetectionResult]] = {}
-        for det in detections:
-            color = det.template.color
-            if color not in pieces_by_color:
-                pieces_by_color[color] = []
-            pieces_by_color[color].append(det)
-            
-        player_locations: Dict[str, str] = {}
-        for color, dets in pieces_by_color.items():
-            if not dets: continue
-            avg_x = np.mean([d.location[0] for d in dets])
-            avg_y = np.mean([d.location[1] for d in dets])
-            if avg_y < img_h * 0.45: location = "上方"
-            elif avg_y > img_h * 0.55: location = "下方"
-            elif avg_x < img_w / 2: location = "左侧"
-            else: location = "右侧"
-            player_locations[color] = location
-
-        report = [
-            f"--- 棋盘识别报告 (颜色掩膜算法, 阈值={match_threshold}) ---",
-            f"总计识别棋子数量: {len(detections)}",
-            f"当前玩家数量: {len(pieces_by_color)}",
-            "-" * 20
-        ]
-
-        location_order = {"上方": 0, "左侧": 1, "下方": 2, "右侧": 3}
-        sorted_players = sorted(
-            pieces_by_color.items(), 
-            key=lambda item: location_order.get(player_locations.get(item[0]), 99)
-        )
-
-        for color, dets in sorted_players:
-            location = player_locations.get(color, "未知")
-            report.append(f"【{location}玩家】 ({color.capitalize()})")
-            report.append(f"  - 棋子总数: {len(dets)}")
-            piece_counts = Counter(d.template.piece_type for d in dets)
-            details = []
-            for piece_cn in self.all_piece_types_cn:
-                piece_en = self.cn_to_en_map[piece_cn]
-                count = piece_counts.get(piece_en, 0)
-                if count > 0:
-                    details.append(f"{piece_cn}x{count}")
-            if details:
-                report.append("  - 详细清单: " + ", ".join(details))
-            report.append("")
-
-        return "\n".join(report)
+    def __del__(self):
+        self.pool.close()
+        self.pool.join()

@@ -22,6 +22,7 @@ class Template:
     image: np.ndarray
     shape: Tuple[int, int]
     filename: str
+    orientation: str = "horizontal"  # 默认方向
 
 class TemplatesManager:
     """
@@ -100,7 +101,8 @@ class TemplatesManager:
                     index=parsed_info['index'],
                     image=image,
                     shape=(w, h),
-                    filename=file_path.name
+                    filename=file_path.name,
+                    orientation=parsed_info['position']  # 使用position作为orientation
                 )
                 self.templates[name] = template
 
@@ -111,3 +113,15 @@ class TemplatesManager:
 
     def get_all_templates(self) -> List[Template]:
         return list(self.templates.values())
+
+    def get_templates_by_color(self) -> Dict[str, List[Template]]:
+        """
+        Returns templates organized by color for multiprocessing
+        """
+        color_templates = {}
+        for template in self.templates.values():
+            color = template.color
+            if color not in color_templates:
+                color_templates[color] = []
+            color_templates[color].append(template)
+        return color_templates
