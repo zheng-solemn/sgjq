@@ -1,14 +1,796 @@
+$ python main.py
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\ffi.py", line 136, in
+__getattr__
+    exitcode = _main(fd, parent_sentinel)
+    exitcode = _main(fd, parent_sentinel)
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    return self._fntab[name]
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    prepare(preparation_data)
+    prepare(preparation_data)
+KeyError: 'LLVMPY_AddSymbol'
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    prepare(preparation_data)
+
+During handling of the above exception, another exception occurred:
+
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+    _fixup_main_from_path(data['init_main_from_path'])
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\ffi.py", line 117, in
+_load_lib
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    main_content = runpy.run_path(main_path,
+    main_content = runpy.run_path(main_path,
+    exitcode = _main(fd, parent_sentinel)
+    self._lib_handle = ctypes.CDLL(str(lib_path))
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    main_content = runpy.run_path(main_path,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "C:\Program Files\Python39\lib\ctypes\__init__.py", line 374, in __init__
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    prepare(preparation_data)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    return _run_module_code(code, init_globals, run_name,
+    return _run_module_code(code, init_globals, run_name,
+    return _run_module_code(code, init_globals, run_name,
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+    self._handle = _dlopen(self._name, mode)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+    _run_code(code, mod_globals, init_globals,
+OSError: [WinError 1455] 页面文件太小，无法完成操作。
+    main_content = runpy.run_path(main_path,
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+
+The above exception was the direct cause of the following exception:
+
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    exec(code, run_globals)
+Traceback (most recent call last):
+    exec(code, run_globals)
+    return _run_module_code(code, init_globals, run_name,
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    from app.gui.main_window import DashboardApp
+  File "<string>", line 1, in <module>
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    from app.gui.main_window import DashboardApp
+    from app.gui.main_window import DashboardApp
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    _run_code(code, mod_globals, init_globals,
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    exitcode = _main(fd, parent_sentinel)
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    import app.gui.callbacks as callbacks
+    import app.gui.callbacks as callbacks
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    exec(code, run_globals)
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    prepare(preparation_data)
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    from app.services.game_analyzer import GameAnalyzer
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    from app.services.game_analyzer import GameAnalyzer
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    from app.services.game_analyzer import GameAnalyzer
+    from app.gui.main_window import DashboardApp
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    from sklearn.cluster import KMeans
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    from sklearn.cluster import KMeans
+    from sklearn.cluster import KMeans
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+    main_content = runpy.run_path(main_path,
+Traceback (most recent call last):
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    from ._dbscan import DBSCAN, dbscan
+    from ._dbscan import DBSCAN, dbscan
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    from ._dbscan import DBSCAN, dbscan
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    from app.services.game_analyzer import GameAnalyzer
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    return _run_module_code(code, init_globals, run_name,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    exitcode = _main(fd, parent_sentinel)
+    from ..neighbors import NearestNeighbors
+    from ..neighbors import NearestNeighbors
+    from ..neighbors import NearestNeighbors
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from sklearn.cluster import KMeans
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+Traceback (most recent call last):
+    prepare(preparation_data)
+    from ._dbscan import DBSCAN, dbscan
+Traceback (most recent call last):
+    from ._nca import NeighborhoodComponentsAnalysis
+    from ._nca import NeighborhoodComponentsAnalysis
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    _fixup_main_from_path(data['init_main_from_path'])
+    from ..neighbors import NearestNeighbors
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    from ..decomposition import PCA
+    from ..decomposition import PCA
+    from ..decomposition import PCA
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+    exitcode = _main(fd, parent_sentinel)
+  File "<string>", line 1, in <module>
+Traceback (most recent call last):
+    exitcode = _main(fd, parent_sentinel)
+    from app.gui.main_window import DashboardApp
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+    main_content = runpy.run_path(main_path,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    prepare(preparation_data)
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    prepare(preparation_data)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    exitcode = _main(fd, parent_sentinel)
+    from ..decomposition import PCA
+    return _run_module_code(code, init_globals, run_name,
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    from ._dict_learning import (
+    from ._dict_learning import (
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from ._dict_learning import (
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 23, in <module>
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+    prepare(preparation_data)
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from ._lda import LatentDirichletAllocation
+    _run_code(code, mod_globals, init_globals,
+    from app.services.game_analyzer import GameAnalyzer
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    prepare(preparation_data)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+    prepare(preparation_data)
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 10, in <module>
+Traceback (most recent call last):
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    main_content = runpy.run_path(main_path,
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 35, in <module>
+    main_content = runpy.run_path(main_path,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 24, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 12, in <module>
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    exec(code, run_globals)
+    from numba import jit
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    from ._logistic import LogisticRegression, LogisticRegressionCV
+    from ._glm import GammaRegressor, PoissonRegressor, TweedieRegressor
+  File "<string>", line 1, in <module>
+    from ._coordinate_descent import (
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    return _run_module_code(code, init_globals, run_name,
+    main_content = runpy.run_path(main_path,
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\_glm\__init__.py",
+ line 4, in <module>
+    _fixup_main_from_path(data['init_main_from_path'])
+    return _run_module_code(code, init_globals, run_name,
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "C:\Program Files\Python39\lib\site-packages\numba\__init__.py", line 73, in <module
+>
+    from app.gui.main_window import DashboardApp
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+    exitcode = _main(fd, parent_sentinel)
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    main_content = runpy.run_path(main_path,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    from .glm import (
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    from numba.core import config
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "<frozen importlib._bootstrap_external>", line 978, in get_code
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    prepare(preparation_data)
+    return _run_module_code(code, init_globals, run_name,
+    main_content = runpy.run_path(main_path,
+    return _run_module_code(code, init_globals, run_name,
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+    _run_code(code, mod_globals, init_globals,
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\config.py", line 17, in <mod
+ule>
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+    prepare(preparation_data)
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+  File "<frozen importlib._bootstrap_external>", line 647, in _compile_bytecode
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    import llvmlite.binding as ll
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    _fixup_main_from_path(data['init_main_from_path'])
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+Traceback (most recent call last):
+    from app.services.game_analyzer import GameAnalyzer
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\__init__.py", line 4,
+in <module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+MemoryError
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    exec(code, run_globals)
+    return _run_module_code(code, init_globals, run_name,
+  File "<string>", line 1, in <module>
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+    from .dylib import *
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+Traceback (most recent call last):
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    main_content = runpy.run_path(main_path,
+    from app.gui.main_window import DashboardApp
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+MemoryError
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    from sklearn.cluster import KMeans
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\dylib.py", line 36, in
+ <module>
+    main_content = runpy.run_path(main_path,
+  File "<string>", line 1, in <module>
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    from app.gui.main_window import DashboardApp
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+    from app.gui.main_window import DashboardApp
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    ffi.lib.LLVMPY_AddSymbol.argtypes = [
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+MemoryError
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    from ._dbscan import DBSCAN, dbscan
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from app.gui.main_window import DashboardApp
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\ffi.py", line 139, in
+__getattr__
+    return _run_module_code(code, init_globals, run_name,
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    exitcode = _main(fd, parent_sentinel)
+    _run_code(code, mod_globals, init_globals,
+MemoryError
+    import app.gui.callbacks as callbacks
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    import app.gui.callbacks as callbacks
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    prepare(preparation_data)
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    cfn = getattr(self._lib, name)
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+Traceback (most recent call last):
+    from app.gui.main_window import DashboardApp
+    from ..neighbors import NearestNeighbors
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\ffi.py", line 131, in
+_lib
+    _run_code(code, mod_globals, init_globals,
+    prepare(preparation_data)
+    exec(code, run_globals)
+    from sklearn.cluster import KMeans
+    from app.services.game_analyzer import GameAnalyzer
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "<string>", line 1, in <module>
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+    exec(code, run_globals)
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    from app.services.game_analyzer import GameAnalyzer
+    import app.gui.callbacks as callbacks
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    self._load_lib()
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    _fixup_main_from_path(data['init_main_from_path'])
+    from app.gui.main_window import DashboardApp
+    from ._dbscan import DBSCAN, dbscan
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    from sklearn.cluster import KMeans
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+  File "C:\Program Files\Python39\lib\site-packages\llvmlite\binding\ffi.py", line 125, in
+_load_lib
+    main_content = runpy.run_path(main_path,
+    from sklearn.cluster import KMeans
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+    from app.gui.main_window import DashboardApp
+    from sklearn.cluster import KMeans
+    from app.services.game_analyzer import GameAnalyzer
+    from ..decomposition import PCA
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 26,
+in <module>
+    raise OSError("Could not find/load shared object file") from e
+    main_content = runpy.run_path(main_path,
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 125, in _main
+    from ..neighbors import NearestNeighbors
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 17,
+in <module>
+    from ._dbscan import DBSCAN, dbscan
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 24, in <module>
+OSError: Could not find/load shared object file
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    return _run_module_code(code, init_globals, run_name,
+    from ._spectral import SpectralClustering, spectral_clustering
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+    prepare(preparation_data)
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    from ._hdbscan.hdbscan import HDBSCAN
+    from sklearn.cluster import KMeans
+    from ._nmf import (
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_spectral.py", line 14,
+ in <module>
+    return _run_module_code(code, init_globals, run_name,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 236, in prepare
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+    from ..neighbors import NearestNeighbors
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    _fixup_main_from_path(data['init_main_from_path'])
+    from app.services.game_analyzer import GameAnalyzer
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+    from ..manifold._spectral_embedding import _spectral_embedding
+    from ._dbscan import DBSCAN, dbscan
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\multiprocessing\spawn.py", line 287, in _fixup_main_f
+rom_path
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 10, in <module>
+    from ..decomposition import PCA
+    from ._dbscan import DBSCAN, dbscan
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\manifold\__init__.py", line 10,
+ in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    exec(code, run_globals)
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+    main_content = runpy.run_path(main_path,
+    from numba import jit
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    from ._t_sne import TSNE, trustworthiness
+    from ..neighbors import NearestNeighbors
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    exec(code, run_globals)
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+  File "C:\Program Files\Python39\lib\runpy.py", line 288, in run_path
+    from ._dict_learning import (
+  File "C:\Program Files\Python39\lib\site-packages\numba\__init__.py", line 74, in <module
+>
+    from ..neighbors import NearestNeighbors
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\manifold\_t_sne.py", line 34, i
+n <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+    from ..decomposition import PCA
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    from app.gui.main_window import DashboardApp
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+  File "<frozen importlib._bootstrap_external>", line 978, in get_code
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+  File "C:\Program Files\Python39\lib\runpy.py", line 97, in _run_module_code
+    from numba.core import types, errors
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 24, in <module>
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+    from app.gui.main_window import DashboardApp
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+    from . import _barnes_hut_tsne, _utils  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 647, in _compile_bytecode
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\__init__.py", line 7,
+in <module>
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    from ._nmf import (
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 36, in <module>
+    import app.gui.callbacks as callbacks
+ImportError: DLL load failed while importing _utils: 页面文件太小，无法完成操作。
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+MemoryError
+  File "C:\Program Files\Python39\lib\runpy.py", line 87, in _run_code
+MemoryError
+    from .containers import *
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_nmf.py", line 38
+, in <module>
+    from ..decomposition import PCA
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+    import app.gui.callbacks as callbacks
+    from ._omp import (
+    from ..decomposition import PCA
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\containers.py", line 2
+3, in <module>
+    exec(code, run_globals)
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+    from app.services.game_analyzer import GameAnalyzer
+  File "E:\SGJQ_Gemini\main.py", line 3, in <module>
+    from .misc import Undefined, unliteral, Optional, NoneType
+    from ._cdnmf_fast import _update_cdnmf_fast
+    from ._dict_learning import (
+    from app.services.game_analyzer import GameAnalyzer
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 10, in <module>
+    from ._dict_learning import (
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\misc.py", line 6, in <
+module>
+    from app.gui.main_window import DashboardApp
+ImportError: DLL load failed while importing _cdnmf_fast: 页面文件太小，无法完成操作。
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+    from numba import jit
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 6, in <module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    from numba.core.ir import UndefinedType
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+    from sklearn.cluster import KMeans
+  File "C:\Program Files\Python39\lib\site-packages\numba\__init__.py", line 74, in <module
+>
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+    import app.gui.callbacks as callbacks
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 35, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 16,
+in <module>
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 46, in <module>
+    from numba.core import types, errors
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 12, in <module>
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+    from ._logistic import LogisticRegression, LogisticRegressionCV
+    from ._dbscan import DBSCAN, dbscan
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\__init__.py", line 7,
+in <module>
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    from ._ridge import Ridge, RidgeClassifier, RidgeClassifierCV, RidgeCV, ridge_regressio
+n
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\_logistic.py", lin
+e 23, in <module>
+    from app.services.game_analyzer import GameAnalyzer
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_dbscan.py", line 16, i
+n <module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    from .containers import *
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+  File "E:\SGJQ_Gemini\app\services\game_analyzer.py", line 6, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\containers.py", line 2
+3, in <module>
+    from ..neighbors import NearestNeighbors
+    from sklearn.cluster import KMeans
+    from ..svm._base import _fit_liblinear
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\__init__.py", line 18
+, in <module>
+MemoryError
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\__init__.py", line 26,
+in <module>
+    from .misc import Undefined, unliteral, Optional, NoneType
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\__init__.py", line 10, in <
+module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    from ._nca import NeighborhoodComponentsAnalysis
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\neighbors\_nca.py", line 22, in
+ <module>
+    from ._spectral import SpectralClustering, spectral_clustering
+    from ._classes import SVC, SVR, LinearSVC, LinearSVR, NuSVC, NuSVR, OneClassSVM
+  File "C:\Program Files\Python39\lib\site-packages\numba\core\types\misc.py", line 6, in <
+module>
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\cluster\_spectral.py", line 14,
+ in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\_classes.py", line 13, in <
+module>
+    from ..decomposition import PCA
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\__init__.py", lin
+e 11, in <module>
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    from ..manifold._spectral_embedding import _spectral_embedding
+MemoryError
+    from numba.core.ir import UndefinedType
+    from ._dict_learning import (
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\manifold\__init__.py", line 8,
+in <module>
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    from ._mds import MDS, smacof
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\decomposition\_dict_learning.py
+", line 21, in <module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\manifold\_mds.py", line 15, in
+<module>
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+MemoryError
+    from ..linear_model import Lars, Lasso, LassoLars, orthogonal_mp_gram
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\__init__.py", line
+ 35, in <module>
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+    from ._logistic import LogisticRegression, LogisticRegressionCV
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\linear_model\_logistic.py", lin
+e 23, in <module>
+  File "<frozen importlib._bootstrap_external>", line 846, in exec_module
+    from ..isotonic import IsotonicRegression
+    from ..svm._base import _fit_liblinear
+    from ._base import BaseLibSVM, BaseSVC, _fit_liblinear, _get_liblinear_solver_type
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\isotonic.py", line 16, in <modu
+le>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\__init__.py", line 10, in <
+module>
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\_base.py", line 31, in <mod
+ule>
+  File "<frozen importlib._bootstrap_external>", line 941, in get_code
+    from ._classes import SVC, SVR, LinearSVC, LinearSVR, NuSVC, NuSVR, OneClassSVM
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\_classes.py", line 13, in <
+module>
+    from ._isotonic import _inplace_contiguous_isotonic_regression, _make_unique
+ImportError: DLL load failed while importing _isotonic: 页面文件太小，无法完成操作。
+  File "<frozen importlib._bootstrap_external>", line 1040, in get_data
+    from ._base import BaseLibSVM, BaseSVC, _fit_liblinear, _get_liblinear_solver_type
+    from . import _libsvm as libsvm  # type: ignore
+  File "C:\Program Files\Python39\lib\site-packages\sklearn\svm\_base.py", line 27, in <mod
+ule>
+ImportError: DLL load failed while importing _libsvm: 页面文件太小，无法完成操作。
+MemoryError
+    from . import _liblinear as liblinear  # type: ignore
+ImportError: DLL load failed while importing _liblinear: 页面文件太小，无法完成操作。
 Exception in Tkinter callback
 Traceback (most recent call last):
   File "C:\Program Files\Python39\lib\tkinter\__init__.py", line 1892, in __call__
     return self.func(*args)
-  File "E:\SGJQ_Gemini\dashboard_main.py", line 151, in detect_game_window
-    self.log_message("--- 开始检测游戏窗口 ---", clear=True)
-TypeError: log_message() got an unexpected keyword argument 'clear'
-Exception in Tkinter callback
-Traceback (most recent call last):
-  File "C:\Program Files\Python39\lib\tkinter\__init__.py", line 1892, in __call__
-    return self.func(*args)
-  File "E:\SGJQ_Gemini\dashboard_main.py", line 151, in detect_game_window
-    self.log_message("--- 开始检测游戏窗口 ---", clear=True)
-TypeError: log_message() got an unexpected keyword argument 'clear'
+  File "E:\SGJQ_Gemini\app\gui\main_window.py", line 43, in <lambda>
+    (0,1):("2. 识别 (ROI)", lambda: callbacks.start_recognition(self, use_roi=True)),
+  File "E:\SGJQ_Gemini\app\gui\callbacks.py", line 101, in start_recognition
+    image_to_analyze = screenshot[y1:y2, x1:x2]
+IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed

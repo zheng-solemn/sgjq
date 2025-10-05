@@ -6,12 +6,54 @@ from collections import Counter
 from sklearn.cluster import KMeans
 from dataclasses import dataclass
 import time
+from multiprocessing import Pool, cpu_count
 
 # --- 导入核心模块 ---
 from app.utils.vision.templates_manager import TemplatesManager
 
 # ==============================================================================
-# --- 核心算法模块 (V31 - 终极真理版) ---
+# --- 并行处理工作函数 (V33 - 稳定并行版) ---
+# ==============================================================================
+
+def _parallel_worker(args: Tuple) -> List[Dict]:
+    """
+    为单个颜色执行颜色掩膜和模板匹配的工作函数。
+    """
+    image, templates, color_name, color_ranges, threshold = args
+    results = []
+    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    
+    if color_name not in color_ranges: return []
+    
+    lower = np.array(color_ranges[color_name]['lower'])
+    upper = np.array(color_ranges[color_name]['upper'])
+    mask = cv2.inRange(hsv_image, lower, upper)
+    masked_image = cv2.bitwise_and(image, image, mask=mask)
+    gray_masked_image = cv2.cvtColor(masked_image, cv2.COLOR_BGR2GRAY)
+
+    for template in templates:
+        hsv_template = cv2.cvtColor(template.image, cv2.COLOR_BGR2HSV)
+        template_mask = cv2.inRange(hsv_template, lower, upper)
+        masked_template = cv2.bitwise_and(template.image, template.image, mask=template_mask)
+        gray_masked_template = cv2.cvtColor(masked_template, cv2.COLOR_BGR2GRAY)
+
+        if gray_masked_template.shape[0] > gray_masked_image.shape[0] or \
+           gray_masked_template.shape[1] > gray_masked_image.shape[1] or \
+           np.sum(gray_masked_template) == 0:
+            continue
+            
+        match_result = cv2.matchTemplate(gray_masked_image, gray_masked_template, cv2.TM_CCOEFF_NORMED)
+        locs = np.where(match_result >= threshold)
+        for pt in zip(*locs[::-1]):
+            results.append({
+                'template': template,
+                'location': pt,
+                'confidence': match_result[pt[1], pt[0]]
+            })
+    return results
+
+# ==============================================================================
+# --- 核心算法模块 (V33 - 稳定并行版) ---
 # ==============================================================================
 
 @dataclass
@@ -45,35 +87,13 @@ def standard_non_max_suppression(detections: List[DetectionResult], iou_threshol
         detections=remaining
     return final_detections
 
-def find_all_matches_with_color_mask(image: np.ndarray, templates_by_color: Dict[str, List], color_ranges: Dict, threshold: float) -> List[DetectionResult]:
-    results = []
-    hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    for color, templates in templates_by_color.items():
-        if color not in color_ranges: continue
-        lower = np.array(color_ranges[color]['lower']); upper = np.array(color_ranges[color]['upper'])
-        mask = cv2.inRange(hsv_image, lower, upper)
-        masked_image = cv2.bitwise_and(image, image, mask=mask)
-        gray_masked_image = cv2.cvtColor(masked_image, cv2.COLOR_BGR2GRAY)
-        for template in templates:
-            hsv_template = cv2.cvtColor(template.image, cv2.COLOR_BGR2HSV)
-            template_mask = cv2.inRange(hsv_template, lower, upper)
-            masked_template = cv2.bitwise_and(template.image, template.image, mask=template_mask)
-            gray_masked_template = cv2.cvtColor(masked_template, cv2.COLOR_BGR2GRAY)
-            if gray_masked_template.shape[0] > gray_masked_image.shape[0] or \
-               gray_masked_template.shape[1] > gray_masked_image.shape[1] or \
-               np.sum(gray_masked_template) == 0: continue
-            match_result = cv2.matchTemplate(gray_masked_image, gray_masked_template, cv2.TM_CCOEFF_NORMED)
-            locs = np.where(match_result >= threshold)
-            for pt in zip(*locs[::-1]):
-                results.append(DetectionResult(template, pt, match_result[pt[1], pt[0]]))
-    return results
-
 class GameAnalyzer:
     def __init__(self, templates_path: str):
         self.tm = TemplatesManager(templates_path)
         self.hsv_color_ranges = {'blue':{'lower':[100,80,80],'upper':[130,255,255]},'green':{'lower':[35,40,40],'upper':[95,255,255]},'orange':{'lower':[5,150,150],'upper':[20,255,255]},'purple':{'lower':[135,80,80],'upper':[160,255,255]}}
         self.cn_to_en_map = {"司令":"commander","军长":"general","师长":"major","旅长":"colonel","团长":"captain","营长":"battalion","连长":"lieutenant","排长":"sergeant","工兵":"miner","地雷":"landmine","炸弹":"bomb","军旗":"flag", "行营":"xingying"}
         self.all_piece_types_cn = list(self.cn_to_en_map.keys())[:-1]
+        self.pool = Pool(processes=cpu_count())
 
     def analyze_screenshot(self, screenshot: np.ndarray, match_threshold: float = 0.8, return_detections: bool = False) -> Any:
         templates_by_color = {}
@@ -84,7 +104,10 @@ class GameAnalyzer:
             if t.color not in templates_by_color: templates_by_color[t.color] = []
             templates_by_color[t.color].append(t)
         
-        matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, match_threshold)
+        tasks = [(screenshot, templates, color, self.hsv_color_ranges, match_threshold) for color, templates in templates_by_color.items()]
+        results_from_pool = self.pool.map(_parallel_worker, tasks)
+        
+        matches = [DetectionResult(**item) for sublist in results_from_pool for item in sublist]
         
         if xingying_template:
             hsv_image = cv2.cvtColor(screenshot, cv2.COLOR_BGR2HSV)
@@ -141,19 +164,14 @@ class GameAnalyzer:
         return "\n".join(report)
 
     def get_player_regions(self, screenshot: np.ndarray, match_threshold: float = 0.7) -> Dict[str, Tuple[int, int, int, int]]:
+        detections = self.analyze_screenshot(screenshot, match_threshold, return_detections=True)
         img_h, img_w, _ = screenshot.shape
-        templates_by_color = {}
-        for t in self.tm.get_all_templates():
-            if t.piece_type == "xingying": continue
-            if t.color not in templates_by_color: templates_by_color[t.color] = []
-            templates_by_color[t.color].append(t)
-        matches = find_all_matches_with_color_mask(screenshot, templates_by_color, self.hsv_color_ranges, threshold=match_threshold)
-        detections = standard_non_max_suppression(matches, iou_threshold=0.3)
         return self._get_regions_from_clusters(detections, img_w, img_h)
 
     def _get_regions_from_clusters(self, detections: List[DetectionResult], img_w: int, img_h: int) -> Dict[str, Tuple[int, int, int, int]]:
         if len(detections) < 4: return {}
-        points = np.array([((d.bbox[0]+d.bbox[2])/2, (d.bbox[1]+d.bbox[3])/2) for d in detections])
+        points = np.array([((d.bbox[0]+d.bbox[2])/2, (d.bbox[1]+d.bbox[3])/2) for d in detections if d.template.color != 'neutral'])
+        if len(points) < 4: return {}
         kmeans = KMeans(n_clusters=4, random_state=0, n_init=10).fit(points)
         centers = kmeans.cluster_centers_
         img_cx, img_cy = img_w/2, img_h/2
@@ -170,3 +188,7 @@ class GameAnalyzer:
         if all(k in bounds for k in ["上方","下方","左侧","右侧"]):
             bounds["中央"] = (bounds["左侧"][2], bounds["上方"][3], bounds["右侧"][0], bounds["下方"][1])
         return bounds
+    
+    def __del__(self):
+        self.pool.close()
+        self.pool.join()
